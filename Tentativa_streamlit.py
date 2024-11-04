@@ -11,7 +11,7 @@ Created on Sun Nov  3 14:15:35 2024
 #streamlit run Tentativa_streamlit.py
 
 import streamlit as st
-from pytube import YouTube
+from pytubefix import YouTube
 import moviepy.editor
 import os
 
