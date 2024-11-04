@@ -57,7 +57,7 @@ def url_to_Mp3(url):
 
 if "https://www.youtube.com" in URL and butao_MP3:
     
-    st.write(os.listdir(os.path.abspath(os.getcwd())))
+    #st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
