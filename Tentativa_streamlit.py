@@ -51,7 +51,7 @@ def url_to_Mp3(url):
     
     video.close()
     
-    nome = base[base.find("streamlit") + 10:]
+    nome = base[base.find("streamlit") + 17:]
     
     return([base + '.mp3', base + ".mp4",nome])
     
