@@ -57,6 +57,8 @@ def url_to_Mp3(url):
 
 if "https://www.youtube.com" in URL and butao_MP3:
     
+    st.write(os.listdir(os.path.abspath(os.getcwd())))
+    
     with st.empty():
     
         carregando = st.write("Processando vídeo...")
