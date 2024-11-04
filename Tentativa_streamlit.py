@@ -59,6 +59,8 @@ if "https://www.youtube.com" in URL and butao_MP3:
     
     st.write(os.listdir(os.path.abspath(os.getcwd())))
     
+    arquivos = os.listdir(os.path.abspath(os.getcwd()))
+    
     with st.empty():
     
         carregando = st.write("Processando vídeo...")
@@ -83,5 +85,12 @@ if "https://www.youtube.com" in URL and butao_MP3:
                                data = file,
                                file_name = download[2] + ".mp4"
                                )
+        
+        for i in arquivos:
+            if ".mp3" in i or ".mp4" in i:
+                os.remove(os.path.abspath(os.getcwd()) + i)
+        
+        
+        
     else:
         st.write("Ocorreu um erro, verifique se a URL está correta!")
