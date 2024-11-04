@@ -88,7 +88,7 @@ if "https://www.youtube.com" in URL and butao_MP3:
         
         for i in arquivos:
             if ".mp3" in i or ".mp4" in i:
-                os.remove(os.path.abspath(os.getcwd()) + i)
+                os.remove(os.path.abspath(os.getcwd() + i))
         
         
         
