@@ -44,7 +44,7 @@ def my_hook(d):
 
     
 def download_audio(link):
-  with YoutubeDL({'extract_audio': True, 'format': 'bestaudio', 'outtmpl': 'resultado.mp3','progress_hooks': [my_hook]}) as video:
+  with YoutubeDL({'extract_audio': True, 'format': 'bestaudio','preferredcodec': 'mp3', 'outtmpl': 'resultado.mp3','progress_hooks': [my_hook]}) as video:
     info_dict = video.extract_info(link, download = True)
     video_title = info_dict['title']
     video.download(link)
