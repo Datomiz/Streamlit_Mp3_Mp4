@@ -24,7 +24,12 @@ URL = st.text_input(label = "URL do Youtube:",
                     placeholder = "https://www.youtube.com/watch?v=URL",
                     )
 
-butao_MP3 = st.button(label = "Processar vídeo",
+col1,col2 = st.columns([1,1])
+
+butao_MP3 = col1.button(label = "Processar Mp3",
+                      help = "Pressione para preparar a URL colocada para download")
+
+butao_MP4 = col1.button(label = "Processar Mp4",
                       help = "Pressione para preparar a URL colocada para download")
 
 def my_hook(d):
@@ -71,34 +76,68 @@ if "https://www.youtube.com" in URL and butao_MP3:
         
         d1,t = download_audio(URL)
         
-        d2,t = download_video(URL)
-        
-        download = [d1,d2,t]
+        download = [d1,t]
          
         carregando = st.write(f"Escolha como quer baixar o vídeo: {download[2]}")
         
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
-    #print("\n\n",os.listdir(os.path.abspath(os.getcwd())))
     
     st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
-    
-        col1,col2 = st.columns([1,1])
         
         with open(download[0],"rb") as file:
             col1.download_button("Download Mp3",
                                data = file,
-                               file_name = download[2] + ".mp3"
+                               file_name = download[1] + ".mp3"
+                               )
+
+        
+        #removendo os arquivos feitos
+        for i in arquivos:
+            if ".mp3" in i or ".mp4" in i:
+                os.remove(os.path.abspath(os.getcwd() +"/" +i))
+        
+        
+        
+    else:
+        st.write("Ocorreu um erro, verifique se a URL está correta!")
+
+if "https://www.youtube.com" in URL and butao_MP4:
+    
+    st.write(os.listdir(os.path.abspath(os.getcwd())))
+    
+    #removendo os arquivos anteriores
+    arquivos = os.listdir(os.path.abspath(os.getcwd()))
+    for i in arquivos:
+        if ".mp3" in i or ".mp4" in i:
+            os.remove(os.path.abspath(os.getcwd() +"/" +i))
+    
+    with st.empty():
+    
+        carregando = st.write("Processando vídeo...")
+        
+        d2,t = download_video(URL)
+        
+        download = [d2,t]
+         
+        carregando = st.write(f"Escolha como quer baixar o vídeo: {download[2]}")
+        
+    arquivos = os.listdir(os.path.abspath(os.getcwd()))
+    
+    
+    st.write(os.listdir(os.path.abspath(os.getcwd())))
+    
+    if type(download) == type([]): 
+        
+        with open(download[0],"rb") as file:
+            col1.download_button("Download Mp4",
+                               data = file,
+                               file_name = download[1] + ".mp4"
                                )
             
-        with open(download[1],"rb") as file:
-            col2.download_button("Download Mp4",
-                               data = file,
-                               file_name = download[2] + ".mp4"
-                               )
-        
+
         #removendo os arquivos feitos
         for i in arquivos:
             if ".mp3" in i or ".mp4" in i:
