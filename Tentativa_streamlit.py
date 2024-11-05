@@ -12,7 +12,8 @@ Created on Sun Nov  3 14:15:35 2024
 
 import streamlit as st
 import os
-
+from pytubefix import YouTube
+import moviepy.editor
 from yt_dlp import YoutubeDL
 
 
@@ -31,6 +32,33 @@ butao_MP3 = col1.button(label = "Processar Mp3",
 
 butao_MP4 = col2.button(label = "Processar Mp4",
                       help = "Pressione para preparar a URL colocada para download")
+
+def url_to_Mp3(url):
+    
+    try:
+        vd = YouTube(url)
+    except:
+        return("ERRO")
+
+
+    video = vd.streams.get_highest_resolution()
+        
+    path_p = video.download()
+    
+    base, ext = os.path.splitext(path_p) 
+    new_file = base + '.mp4'
+    os.rename(path_p, new_file)
+    
+    video = moviepy.editor.VideoFileClip(base + '.mp4')
+    
+    video.audio.write_audiofile(base + '.mp3')
+    
+    video.close()
+    
+    nome = base[base.find("streamlit") + 18:]
+    
+    return(base + '.mp3',nome)
+
 
 def my_hook(d):
     if d['status'] == 'downloading':
@@ -75,7 +103,7 @@ if "https://www.youtube.com" in URL and butao_MP3:
     
         carregando = st.write("Processando vídeo...")
         
-        d1,t = download_audio(URL)
+        d1,t = url_to_Mp3(URL)
         
         download = [d1,t]
          
@@ -87,8 +115,7 @@ if "https://www.youtube.com" in URL and butao_MP3:
     st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
-        print(download[0])
-        print(download[1] + ".mp3")
+        
         with open(download[0],"rb") as file:
             col1.download_button("Download Mp3",
                                data = file,
