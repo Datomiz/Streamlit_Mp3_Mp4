@@ -78,7 +78,7 @@ if "https://www.youtube.com" in URL and butao_MP3:
         
         download = [d1,t]
          
-        carregando = st.write(f"Escolha como quer baixar o vídeo: {download[2]}")
+        carregando = st.write(f"Escolha como quer baixar o vídeo: {download[1]}")
         
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
@@ -122,7 +122,7 @@ if "https://www.youtube.com" in URL and butao_MP4:
         
         download = [d2,t]
          
-        carregando = st.write(f"Escolha como quer baixar o vídeo: {download[2]}")
+        carregando = st.write(f"Escolha como quer baixar o vídeo: {download[1]}")
         
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
