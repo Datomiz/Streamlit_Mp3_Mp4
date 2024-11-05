@@ -60,6 +60,7 @@ def download_video(link):
     
     return("resultado.mp4",video_title)
 
+
 if "https://www.youtube.com" in URL and butao_MP3:
     
     st.write(os.listdir(os.path.abspath(os.getcwd())))
@@ -86,7 +87,8 @@ if "https://www.youtube.com" in URL and butao_MP3:
     st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
-        
+        print(download[0])
+        print(download[1] + ".mp3")
         with open(download[0],"rb") as file:
             col1.download_button("Download Mp3",
                                data = file,
