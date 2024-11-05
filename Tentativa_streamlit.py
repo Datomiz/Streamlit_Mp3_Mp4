@@ -29,7 +29,7 @@ col1,col2 = st.columns([1,1])
 butao_MP3 = col1.button(label = "Processar Mp3",
                       help = "Pressione para preparar a URL colocada para download")
 
-butao_MP4 = col1.button(label = "Processar Mp4",
+butao_MP4 = col2.button(label = "Processar Mp4",
                       help = "Pressione para preparar a URL colocada para download")
 
 def my_hook(d):
@@ -132,7 +132,7 @@ if "https://www.youtube.com" in URL and butao_MP4:
     if type(download) == type([]): 
         
         with open(download[0],"rb") as file:
-            col1.download_button("Download Mp4",
+            col2.download_button("Download Mp4",
                                data = file,
                                file_name = download[1] + ".mp4"
                                )
