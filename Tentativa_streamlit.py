@@ -119,8 +119,7 @@ if "https://www.youtube.com" in URL and butao_MP3:
         with open(download[0],"rb") as file:
             col1.download_button("Download Mp3",
                                data = file,
-                               #file_name = download[1] + ".mp3"
-                               file_name = "resultado.mp3"
+                               file_name = download[1] + ".mp3"
                                )
 
         
