@@ -57,7 +57,7 @@ def download_video(link):
 
 if "https://www.youtube.com" in URL and butao_MP3:
     
-    #st.write(os.listdir(os.path.abspath(os.getcwd())))
+    st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     #removendo os arquivos anteriores
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
@@ -80,6 +80,8 @@ if "https://www.youtube.com" in URL and butao_MP3:
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
     #print("\n\n",os.listdir(os.path.abspath(os.getcwd())))
+    
+    st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
     
