@@ -28,10 +28,12 @@ URL = st.text_input(label = "URL do Youtube:",
 col1,col2 = st.columns([1,1])
 
 butao_MP3 = col1.button(label = "Processar Mp3",
-                      help = "Pressione para preparar a URL colocada para download")
+                      help = "Pressione para preparar a URL colocada para download",
+                      icon = "💿")
 
 butao_MP4 = col2.button(label = "Processar Mp4",
-                      help = "Pressione para preparar a URL colocada para download")
+                      help = "Pressione para preparar a URL colocada para download",
+                      icon = "📀")
 
 def url_to_Mp3(url):
     
@@ -111,7 +113,6 @@ if "https://www.youtube.com" in URL and butao_MP3:
         
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
-    
     #st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
@@ -119,7 +120,8 @@ if "https://www.youtube.com" in URL and butao_MP3:
         with open(download[0],"rb") as file:
             col1.download_button("Download Mp3",
                                data = file,
-                               file_name = download[1] + ".mp3"
+                               file_name = download[1] + ".mp3",
+                               icon = "💾"
                                )
 
         
@@ -155,7 +157,6 @@ if "https://www.youtube.com" in URL and butao_MP4:
         
     arquivos = os.listdir(os.path.abspath(os.getcwd()))
     
-    
     #st.write(os.listdir(os.path.abspath(os.getcwd())))
     
     if type(download) == type([]): 
@@ -163,7 +164,8 @@ if "https://www.youtube.com" in URL and butao_MP4:
         with open(download[0],"rb") as file:
             col2.download_button("Download Mp4",
                                data = file,
-                               file_name = download[1] + ".mp4"
+                               file_name = download[1] + ".mp4",
+                               icon = "💾"
                                )
             
 
