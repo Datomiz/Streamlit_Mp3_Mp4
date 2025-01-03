@@ -17,6 +17,8 @@ import moviepy.editor
 from yt_dlp import YoutubeDL
 
 
+from pytubefix import YouTube
+
 st.set_page_config(layout = "centered")
 
 st.title("Conversor de vídeo de youtube em Mp3 e Mp4")
@@ -90,6 +92,22 @@ def download_video(link):
     
     return("resultado.mp4",video_title)
 
+def download_video2(link):
+    
+    vd = YouTube(link,
+                 use_oauth=True,
+                 allow_oauth_cache=True
+                 )
+    
+    vd = vd.streams.get_highest_resolution()
+   
+    vd.download(filename = "resultado.mp4")
+    
+    video_title = vd.default_filename
+    
+    video_title = video_title.replace(".mp4","")
+    
+    return("resultado.mp4",video_title)
 
 if "https://www.youtube.com" in URL and butao_MP3:
     
@@ -149,7 +167,13 @@ if "https://www.youtube.com" in URL and butao_MP4:
     
         carregando = st.write("Processando vídeo...")
         
-        d2,t = download_video(URL)
+        try:
+        
+            d2,t = download_video(URL)
+                    
+        except:
+            
+            d2,t = download_video2(URL)
         
         download = [d2,t]
          
