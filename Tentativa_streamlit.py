@@ -95,8 +95,8 @@ def download_video(link):
 def download_video2(link):
     
     vd = YouTube(link,
-                 use_oauth=True,
-                 allow_oauth_cache=True
+                 #use_oauth=True,
+                 #allow_oauth_cache=True
                  )
     
     vd = vd.streams.get_highest_resolution()
