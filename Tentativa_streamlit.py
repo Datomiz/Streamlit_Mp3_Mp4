@@ -167,13 +167,15 @@ if "https://www.youtube.com" in URL and butao_MP4:
     
         carregando = st.write("Processando vídeo...")
         
-        #try:
+        try:
         
-        d2,t = download_video(URL)
+            d2,t = download_video(URL)
                     
-        #except:
+        except Exception as e:
+
+            print(str(e))
             
-            #d2,t = download_video2(URL)
+            d2,t = download_video2(URL)
         
         download = [d2,t]
          
@@ -202,4 +204,5 @@ if "https://www.youtube.com" in URL and butao_MP4:
         
     else:
         st.write("Ocorreu um erro, verifique se a URL está correta!")
+
 
